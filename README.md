@@ -67,7 +67,7 @@ python -m ddpmigrator export --sandbox --username user@domain.com.sandbox_name -
 This command is useful during rollout of DDP migrator to make sure external IDs in production and all sandboxes match.
 It will push external IDs stored in the source directory to a sandbox.
 
-**Update all external IDs**
+**Update Specific DDPs external IDs**
 ```sh
 python -m ddpmigrator push-ids  --sandbox --username user@domain.com.sandbox_name --password Secret --source-dir ..
 ```
