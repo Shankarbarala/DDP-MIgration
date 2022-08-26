@@ -178,12 +178,10 @@ class DdpPushIds(DdpCommandBase):
         return None
 
     def _replace_id_values(self, table_name):
-        print(self._data)
         src_header = self._data[table_name]['header']
         src_rows = self._data[table_name]['src_rows']
 
         table_settings = self._table_settings[table_name]
-        print(table_settings)
         # Find indexes of name columns
         names = table_settings['name']
 
