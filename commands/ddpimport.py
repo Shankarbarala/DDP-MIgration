@@ -78,8 +78,7 @@ class DdpImport(DdpCommandBase):
                     self._file_changes['added'].append(full_filename)
 
     def _fake_new_files_for_ddp_list(self):
-        # Add data files to the list of changed/new files first
-        temp_dir = tempfile.TemporaryDirectory()
+        temp_dir = tempfile.TemporaryDirectory(dir = os.getcwd())
         for ddp in self._kwargs['ddp']:
             # Find added files using git diff
             args = [
@@ -141,10 +140,11 @@ class DdpImport(DdpCommandBase):
             self._copy_file_to_temp(filename)
 
     def _create_temp_dirs(self):
-        self._data_tempdir = tempfile.TemporaryDirectory()
+        print("current path", os.getcwd())
+        self._data_tempdir = tempfile.TemporaryDirectory(dir= os.getcwd())
         self._import_tempdir = os.path.join(self._data_tempdir.name, "import")
         os.mkdir(self._import_tempdir)
-        self._file_tempdir = tempfile.TemporaryDirectory()
+        self._file_tempdir = tempfile.TemporaryDirectory(dir= os.getcwd())
 
     def _calculate_delta(self):
         self._create_temp_dirs()
@@ -365,7 +365,7 @@ class DdpImport(DdpCommandBase):
             file.close()
 
     def _create_deploy_zip_file(self):
-        zip_temp_file = tempfile.TemporaryFile()
+        zip_temp_file = tempfile.TemporaryFile(dir = os.getcwd())
         zip_file = zipfile.ZipFile(zip_temp_file, mode='w', compression=zipfile.ZIP_DEFLATED)
         for root, subdirs, files in os.walk(self._file_tempdir.name):
             # Skip empty directories
