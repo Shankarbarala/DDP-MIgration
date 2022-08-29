@@ -62,10 +62,6 @@ python -m ddpmigrator export --sandbox --username user@domain.com.sandbox_name -
 python -m ddpmigrator export --sandbox --username user@domain.com.sandbox_name --password Secret --source-dir .. --ddp "EOP For Enterprise Payment"
 ```
 
-### Push external IDs
-
-This command is useful during rollout of DDP migrator to make sure external IDs in production and all sandboxes match.
-It will push external IDs stored in the source directory to a sandbox.
 
 **Update Specific DDPs external IDs**
 ```sh
